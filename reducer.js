@@ -1,3 +1,6 @@
+import { combineReducers } from 'redux';
+import comments from './comments';
+import users from './users';
 import {
 	ADD_COMMENT,
 	REMOVE_COMMENT,
@@ -12,45 +15,16 @@ const initialState = {
 	users: []
 };
 
-function reducer(state = initialState, action) {
-	switch (action.type) {
-		case ADD_COMMENT:
-			return Object.assign({}, state, {
-				comments: [{
-					id: action.id,
-					text: action.text,
-					votes: 0
-				}, ...state] // does this add only "comments" from "state" or whole "state"?
-			});
-		case REMOVE_COMMENT:
-			return Object.assign({}, state, {
-				comments: state.comments.filter(comment => comment.id !== action.id)
-			});
-		case EDIT_COMMENT:
-			return Object.assign({}, state, {
-				comments: state.comments.map(comment => 
-					comment.id === action.id ? {
-						...state,				// is this correct?
-						text: action.text
-					} : comment)
-			});
-		case THUMB_UP_COMMENT:
-		return Object.assign({}, state, {
-			comments: state.comments.map(comment => 
-				comment.id === action.id ? {
-					...state,				// is this correct?
-					votes = state.votes + 1
-				} : comment)
-		});
-		case THUMB_DOWN_COMMENT:
-		return Object.assign({}, state, {
-			comments: state.comments.map(comment => 
-				comment.id === action.id ? {
-					...state,				// is this correct?
-					votes = state.votes - 1
-				} : comment)
-		});
-		default:
-			return state;
-	}
+const app = combineReducers({
+    comments,
+    users
+});
+
+/* - DLACZEGO TE DWIE RZECZY PONIŻEJ I POWYŻEJ "TO TO SAMO" ???
+function app(state = initialState, action) {
+	return {
+		comments: comments(state.comments, action),
+		users: users(state.users, action)
+	};
 }
+*/
