@@ -20,6 +20,8 @@ const app = combineReducers({
     users
 });
 
+export default app;
+
 /* - DLACZEGO TE DWIE RZECZY PONIŻEJ I POWYŻEJ "TO TO SAMO" ???
 function app(state = initialState, action) {
 	return {
