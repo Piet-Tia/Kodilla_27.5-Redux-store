@@ -1,26 +1,13 @@
 import { combineReducers } from 'redux';
-import comments from './comments';
-import users from './users';
-import {
-	ADD_COMMENT,
-	REMOVE_COMMENT,
-	EDIT_COMMENT,
-	THUMB_UP_COMMENT,
-	THUMB_DOWN_COMMENT
-} from './actions';
+import {comments} from './comments.js';
+import users from './users.js';
 
 
-const initialState = {
-	comments: [],
-	users: []
-};
-
-const app = combineReducers({
+export const reducer = combineReducers({
     comments,
     users
 });
 
-export default app;
 
 /* - DLACZEGO TE DWIE RZECZY PONIŻEJ I POWYŻEJ "TO TO SAMO" ???
 function app(state = initialState, action) {
@@ -29,4 +16,12 @@ function app(state = initialState, action) {
 		users: users(state.users, action)
 	};
 }
+
+
+
+const initialState = {
+	comments: [],
+	users: []
+};
+
 */

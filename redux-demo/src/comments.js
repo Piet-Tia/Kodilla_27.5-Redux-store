@@ -1,3 +1,11 @@
+import {
+	ADD_COMMENT,
+	REMOVE_COMMENT,
+	EDIT_COMMENT,
+	THUMB_UP_COMMENT,
+	THUMB_DOWN_COMMENT
+} from './actions.js';
+
 export function comments(state = [], action) {
 	switch (action.type) {
 		case ADD_COMMENT:
@@ -5,7 +13,7 @@ export function comments(state = [], action) {
 				id: action.id,
 				text: action.text,
 				votes: 0
-			}, ...state.comments];
+			}, ...state];
 		case REMOVE_COMMENT:
 			return [{...state.comments.filter(comment => comment.id !== action.id)
 			}];
@@ -22,7 +30,7 @@ export function comments(state = [], action) {
 				...state.comments.map(comment =>
 					comment.id === action.id ? {
 						...state.comments,
-						votes = state.comments.votes + 1
+						votes: state.comments.votes + 1
 					} : comment)
 			}];
 		case THUMB_DOWN_COMMENT:
@@ -30,7 +38,7 @@ export function comments(state = [], action) {
 			...state.comments.map(comment =>
 				comment.id === action.id ? {
 					...state.comments,
-					votes = state.comments.votes + 1
+					votes: state.comments.votes + 1
 				} : comment)
 			}];
 		default:
