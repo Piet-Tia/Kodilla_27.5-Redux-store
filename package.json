@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Piet-Tia/Kodilla_27.3-Redux-actions#readme",
   "dependencies": {
+    "redux-logger": "^3.0.6",
     "uuid": "^3.3.2"
   }
 }

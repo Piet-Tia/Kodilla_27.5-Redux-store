@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
-import props from './CommentsListContainer';
 import CommentsList from './CommentsListContainer.js';
+import DevTools from './DevTools';
 
 const App = () => {
-  return (
-    <div className="App">
-      Tu będzie lista komentarzy!!
-      <CommentsList comments={props}/>
-    </div>
-  );
+	return (
+		<div className="App">
+			<CommentsList />
+			<DevTools />
+		</div>
+	);
 };
 
 export default App;

@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
+import DevTools from './DevTools';
 
 import App from './App.js';
 import * as serviceWorker from './serviceWorker.js';
@@ -13,7 +14,11 @@ import {
 import './index.css';
 
 
-const store = createStore(reducer);
+
+const store = createStore(
+	reducer,
+	DevTools.instrument()
+);
 
 
 
