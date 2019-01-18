@@ -15,32 +15,25 @@ export function comments(state = [], action) {
 				votes: 0
 			}, ...state];
 		case REMOVE_COMMENT:
-			return [{...state.comments.filter(comment => comment.id !== action.id)
-			}];
+			return state.comments.filter(comment => comment.id !== action.id);
 		case EDIT_COMMENT:
-			return [{
-				...state.comments.map(comment =>
+			return state.comments.map(comment =>
 					comment.id === action.id ? {
-						...state.comments,
-						text: action.text
-					} : comment)
-			}];
+						...comment,
+						...action
+					} : comment);
 		case THUMB_UP_COMMENT:
-			return [{
-				...state.comments.map(comment =>
+			return state.comments.map(comment =>
 					comment.id === action.id ? {
-						...state.comments,
-						votes: state.comments.votes + 1
-					} : comment)
-			}];
+						...comment,
+						votes: comment.votes + 1
+					} : comment);
 		case THUMB_DOWN_COMMENT:
-		return [{
-			...state.comments.map(comment =>
+		return state.comments.map(comment =>
 				comment.id === action.id ? {
-					...state.comments,
-					votes: state.comments.votes + 1
-				} : comment)
-			}];
+					...comment,
+					votes: comment.votes - 1
+				} : comment);
 		default:
 			return state;
 	}

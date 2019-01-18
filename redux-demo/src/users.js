@@ -1,8 +1,5 @@
-/*
 
-function users(state = [], action) {
+
+export function users(state = [], action) {
     return state;
 }
-
-
-*/
